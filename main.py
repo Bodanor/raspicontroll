@@ -15,49 +15,49 @@ class MyController(Controller):
         self.logger_controller.info("BUTTON_X_PRESSED")
 
     def on_x_release(self):
-        pass
+        self.logger_controller.info("BUTTON_X_RELEASED")
 
     def on_triangle_press(self):
-        pass
+        self.logger_controller.info("BUTTON_TRIANGLE_PRESSED")
 
     def on_triangle_release(self):
-        pass
+        self.logger_controller.info("BUTTON_TRIANGLE_RELEASED")
 
     def on_circle_press(self):
-        pass
+        self.logger_controller.info("BUTTON_CIRCLE_PRESSED")
 
     def on_circle_release(self):
-        pass
+        self.logger_controller.info("BUTTON_CIRCLE_RELEASED")
 
     def on_square_press(self):
-        pass
+        self.logger_controller.info("BUTTON_SQUARE_PRESSED")
 
     def on_square_release(self):
-        pass
+        self.logger_controller.info("BUTTON_SQUARE_RELEASED")
 
     def on_L1_press(self):
-        pass
+        self.logger_controller.info("BUTTON_L1_PRESSED")
 
     def on_L1_release(self):
-        pass
+        self.logger_controller.info("BUTTON_L1_RELEASED")
 
     def on_L2_press(self, value):
-        pass
+        self.logger_controller.info("BUTTON_L2_PRESSED")
 
     def on_L2_release(self):
-        pass
+        self.logger_controller.info("BUTTON_L2_RELEASED")
 
     def on_R1_press(self):
-        pass
+        self.logger_controller.info("BUTTON_R1_PRESSED")
 
     def on_R1_release(self):
-        pass
+        self.logger_controller.info("BUTTON_R1_RELEASED")
 
     def on_R2_press(self, value):
-        pass
+        self.logger_controller.info("BUTTON_R2_PRESSED")
 
     def on_R2_release(self):
-        pass
+        self.logger_controller.info("BUTTON_R2_RELEASED")
 
     def on_up_arrow_press(self):
         pass
@@ -206,7 +206,7 @@ while valid_interface == False:
         logging.info(f"Interface choosed : {interface_in_use}")
 
     except Exception as e:
-        logging.error("Exception occured at the interfacing choosing menu")
+        logging.error("Exception occured at the interfacing choosing menu", exc_info=True)
         valid_interface = False
 
 # Listening for input from the interface
