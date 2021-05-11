@@ -10,7 +10,7 @@ class MyController(Controller):
 
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
-        self.logger_controller = logging.getLogger(controller.interface)
+        self.logger_controller = logging.getLogger(self.interface)
     def on_x_press(self):
         self.logger_controller.info("BUTTON_X_PRESSED")
 
@@ -185,16 +185,23 @@ while scanning == True:
 
 #Printing the interfaces and choose one
 
-print("Available Interfaces :\n")
 
-for index, interface in enumerate(interfaces):
-    print(f"{index} : {interface}")
-    logging.info(f"Found interface : {interface}")
+while interface_found == "":
+    try:
+        print("Available Interfaces :\n")
 
-interface_in_use = input("\n\nInterface to use >> ")
-interface_in_use = interfaces[int(interface_in_use)]
+        for index, interface in enumerate(interfaces):
+            print(f"{index} : {interface}")
+            logging.info(f"Found interface : {interface}")
 
-logging.info(f"Interface choosed : {interface_in_use}")
+        interface_in_use = input("\n\nInterface to use >> ")
+        interface_in_use = interfaces[int(interface_in_use)]
+
+        logging.info(f"Interface choosed : {interface_in_use}")
+
+    except Exception as e:
+        logging.error("Exception occured at the interfacing choosing menu")
+
 # Listening for input from the interface
 try:
     controller = MyController(interface=interface_in_use, connecting_using_ds4drv=False)
