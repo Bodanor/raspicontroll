@@ -10,13 +10,9 @@ class MyController(Controller):
 
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
-        self.logger = logging.getLogger()
-        self.logger_handler = logging.StreamHandler()
-        self.logger.addHandler(self.logger_handler)
-
+        self.logger_controller = logging.getLogger(controller.interface)
     def on_x_press(self):
-        self.logger_handler.setFormatter(logging.Formatter("%[INTERFACE"""))
-        self.logger.warning("chris")
+        self.logger_controller.info("BUTTON_X_PRESSED")
 
     def on_x_release(self):
         pass
@@ -152,7 +148,7 @@ class MyController(Controller):
 #Logging settings
 log_now = datetime.datetime.now()
 log_now = log_now.strftime("%y_%m_%d-%H_%M_%S")
-logging.basicConfig(level=logging.DEBUG, filename=f'log-{log_now}', format='[%(asctime)s] %(message)s')
+logging.basicConfig(level=logging.DEBUG, filename=f'log-{log_now}', format='[%(asctime)s] [%(name)s] %(message)s')
 
 # Interface variables
 
