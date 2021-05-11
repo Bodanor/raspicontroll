@@ -144,6 +144,9 @@ class MyController(Controller):
     def on_playstation_button_release(self):
         self.logger_controller.info(f"BUTTON_PS_RELEASED")
 
+    def disconnect(self):
+        self.logger_controller.warning("Interface Disconnected !")
+
 
 #Logging settings
 log_now = datetime.datetime.now()
@@ -212,7 +215,7 @@ while valid_interface == False:
 # Listening for input from the interface
 try:
     controller = MyController(interface=interface_in_use, connecting_using_ds4drv=False)
-    controller.listen()
+    controller.listen(on_disconnect=controller.disconnect)
 
 except Exception as e:
     logging.error("Exception occured with the interface", exc_info=True)
