@@ -155,8 +155,8 @@ print("Available Interfaces :\n")
 for index, interface in enumerate(interfaces):
     print(f"{index} : {interface}")
 
-interface_choice = input("\n\nInterface >>")
-interface_in_use = interfaces[interface_choice]
+interface_in_use = input("\n\nInterface >>")
+interface_in_use = interfaces[int(interface_in_use)]
 
 print(interface_in_use)
 
