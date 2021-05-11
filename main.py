@@ -1,3 +1,5 @@
+import sys
+
 from pyPS4Controller.controller import Controller
 
 
@@ -142,24 +144,36 @@ class MyController(Controller):
 
 interfaces = []
 interface_in_use = ""
-for i in range (0, 100):
-    try:
-        open(f"/dev/input/js{i}")
-        interfaces.append(f"/dev/input/js{i}")
+interface_found = False
+scanning = True
+
+while scanning == True:
+    for i in range (0, 100):
+        try:
+            open(f"/dev/input/js{i}")
+            interfaces.append(f"/dev/input/js{i}")
+            interface_found = True
 
 
-    except FileNotFoundError:
-        pass
+        except FileNotFoundError:
+            pass
 
+    if not interface_found:
+        scan_choice = input("No interfaces found. Would you like to scan again ? (y/n)")
+        if (scan_choice == "y" or scan_choice == "Y" or scan_choice == "YES" or scan_choice == "yes"):
+            scanning = True
+        else:
+            sys.exit(0)
+
+    else:
+        scanning = False
 print("Available Interfaces :\n")
 for index, interface in enumerate(interfaces):
     print(f"{index} : {interface}")
 
-interface_in_use = input("\n\nInterface >>")
+interface_in_use = input("\n\nInterface to use >> ")
 interface_in_use = interfaces[int(interface_in_use)]
 
-print(interface_in_use)
 
-controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
+controller = MyController(interface=interface_in_use, connecting_using_ds4drv=False)
 controller.listen()
-print(controller.interface)
