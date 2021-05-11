@@ -185,8 +185,9 @@ while scanning == True:
 
 #Printing the interfaces and choose one
 
+valid_interface = False
 
-while interface_found == "":
+while valid_interface == False:
     try:
         print("Available Interfaces :\n")
 
@@ -195,12 +196,18 @@ while interface_found == "":
             logging.info(f"Found interface : {interface}")
 
         interface_in_use = input("\n\nInterface to use >> ")
-        interface_in_use = interfaces[int(interface_in_use)]
+        if interface_in_use.strip().isdigit():
+            interface_in_use = interfaces[int(interface_in_use)]
+            valid_interface = True
+
+        else:
+            valid_interface = False
 
         logging.info(f"Interface choosed : {interface_in_use}")
 
     except Exception as e:
         logging.error("Exception occured at the interfacing choosing menu")
+        valid_interface = False
 
 # Listening for input from the interface
 try:
