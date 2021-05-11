@@ -1,4 +1,7 @@
 import sys
+import logging
+import datetime
+import contextlib
 
 from pyPS4Controller.controller import Controller
 
@@ -142,10 +145,19 @@ class MyController(Controller):
         pass
 
 
+#Logging settings
+log_now = datetime.datetime.now()
+log_now = log_now.strftime("%y_%m_%d-%H_%M_%S")
+logging.basicConfig(level=logging.DEBUG, filename=f'log-{log_now}', format='[%(asctime)s] %(message)s')
+
+# Interface variables
+
 interfaces = []
 interface_in_use = ""
 interface_found = False
 scanning = True
+
+#Scanning for interfaces
 
 while scanning == True:
     for i in range (0, 100):
@@ -155,25 +167,38 @@ while scanning == True:
             interface_found = True
 
 
-        except FileNotFoundError:
+        except Exception as e:
             pass
 
     if not interface_found:
         scan_choice = input("No interfaces found. Would you like to scan again ? (y/n)")
+        logging.info("No interface found")
         if (scan_choice == "y" or scan_choice == "Y" or scan_choice == "YES" or scan_choice == "yes"):
             scanning = True
+            logging.info("Scanning again")
         else:
+            logging.info("Exiting program")
             sys.exit(0)
 
     else:
         scanning = False
+
+#Printing the interfaces and choose one
+
 print("Available Interfaces :\n")
+
 for index, interface in enumerate(interfaces):
     print(f"{index} : {interface}")
+    logging.info(f"Found interface : {interface}")
 
 interface_in_use = input("\n\nInterface to use >> ")
 interface_in_use = interfaces[int(interface_in_use)]
 
+logging.info(f"Interface choosed : {interface_in_use}")
+# Listening for input from the interface
+try:
+    controller = MyController(interface=interface_in_use, connecting_using_ds4drv=False)
+    controller.listen()
 
-controller = MyController(interface=interface_in_use, connecting_using_ds4drv=False)
-controller.listen()
+except Exception as e:
+    logging.error("Exception occured with the interface", exc_info=True)
