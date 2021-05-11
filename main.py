@@ -60,89 +60,89 @@ class MyController(Controller):
         self.logger_controller.info("BUTTON_R2_RELEASED")
 
     def on_up_arrow_press(self):
-        pass
+        self.logger_controller.info("ARROW_UP_PRESSED")
 
     def on_up_down_arrow_release(self):
-        pass
+        self.logger_controller.info("ARROW_UP_DOWN_RELEASED")
 
     def on_down_arrow_press(self):
-        pass
+        self.logger_controller.info("ARROW_DOWN_PRESSED")
 
     def on_left_arrow_press(self):
-        pass
+        self.logger_controller.info("ARROW_LEFT_PRESSED")
 
     def on_left_right_arrow_release(self):
-        pass
+        self.logger_controller.info("ARROW_LEFT_RIGHT_RELEASED")
 
     def on_right_arrow_press(self):
-        pass
+        self.logger_controller.info("ARROW_RIGHT_PRESSED")
 
     def on_L3_up(self, value):
-        pass
+        self.logger_controller.info(f"JOY_L3_UP : {value}")
 
     def on_L3_down(self, value):
-        #print("on_L3_down: {}".format(value))
+        self.logger_controller.info(f"JOY_L3_DOWN : {value}")
         pass
 
     def on_L3_left(self, value):
-        pass
+        self.logger_controller.info(f"JOY_L3_LEFT : {value}")
 
     def on_L3_right(self, value):
-        pass
+        self.logger_controller.info(f"JOY_L3_RIGHT : {value}")
 
     def on_L3_y_at_rest(self):
-        pass
+        self.logger_controller.info(f"JOY_L3_Y_AT_REST")
 
     def on_L3_x_at_rest(self):
-        pass
+        self.logger_controller.info(f"JOY_L3_X_AT_REST")
 
     def on_L3_press(self):
-        pass
+        self.logger_controller.info(f"JOY_L3_PRESSED")
 
     def on_L3_release(self):
-        pass
+        self.logger_controller.info(f"JOY_L3_RELEASED")
 
     def on_R3_up(self, value):
-        pass
+        self.logger_controller.info(f"JOY_R3_UP : {value}")
 
     def on_R3_down(self, value):
-        pass
+        self.logger_controller.info(f"JOY_R3_DOWN : {value}")
 
     def on_R3_left(self, value):
-        pass
+        self.logger_controller.info(f"JOY_R3_LEFT : {value}")
 
     def on_R3_right(self, value):
-        pass
+        self.logger_controller.info(f"JOY_R3_RIGHT : {value}")
 
     def on_R3_y_at_rest(self):
-        pass
+        self.logger_controller.info(f"JOY_R3_Y_AT_REST")
 
     def on_R3_x_at_rest(self):
-        pass
+        self.logger_controller.info(f"JOY_R3_X_AT_REST")
 
     def on_R3_press(self):
-        pass
+        self.logger_controller.info(f"JOY_R3_PRESSED")
 
     def on_R3_release(self):
-        pass
+        self.logger_controller.info(f"JOY_R3_RELEASED")
 
     def on_options_press(self):
-        pass
+        self.logger_controller.info(f"BUTTON_OPTIONS_PRESSED")
 
     def on_options_release(self):
-        pass
+        self.logger_controller.info(f"BUTTON_OPTIONS_RELEASED")
 
     def on_share_press(self):
-        pass
+        self.logger_controller.info(f"BUTTON_SHARE_PRESSED")
 
     def on_share_release(self):
-        pass
+        self.logger_controller.info(f"BUTTON_SHARE_RELEASED")
 
     def on_playstation_button_press(self):
-        pass
+        self.logger_controller.info(f"BUTTON_PS_PRESSED")
 
     def on_playstation_button_release(self):
-        pass
+        self.logger_controller.info(f"BUTTON_PS_RELEASED")
 
 
 #Logging settings
