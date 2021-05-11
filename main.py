@@ -10,9 +10,13 @@ class MyController(Controller):
 
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
+        self.logger = logging.getLogger()
+        self.logger_handler = logging.StreamHandler()
+        self.logger.addHandler(self.logger_handler)
 
     def on_x_press(self):
-        pass
+        self.logger_handler.setFormatter(logging.Formatter("%[INTERFACE"""))
+        self.logger.warning("chris")
 
     def on_x_release(self):
         pass
